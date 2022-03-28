@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  
+  @apply text-slate-700 dark:text-slate-400 dark:bg-slate-800;
+}
+
+a {
+  @apply font-medium text-emerald-700
+  hover:text-emerald-800 hover:bg-emerald-50 hover:underline
+  dark:text-emerald-500
+  dark:hover:text-emerald-600 dark:hover:bg-emerald-900 dark:bg-opacity-50;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.btn {
+  @apply px-4 py-2 mr-4 rounded-md font-medium bg-amber-100 text-amber-600 
+  hover:bg-amber-200 hover:text-amber-600 hover:no-underline
+  dark:bg-amber-200 dark:bg-opacity-50 dark:text-amber-300
+  dark:hover:opacity-75;
+}
