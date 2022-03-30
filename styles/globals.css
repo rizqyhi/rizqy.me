@@ -6,10 +6,15 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  font-family: "DM Sans", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   
-  @apply text-slate-700 dark:text-slate-400 dark:bg-slate-800;
+  @apply min-h-screen text-slate-700 dark:text-slate-400 dark:bg-slate-800;
+}
+
+body {
+  background: url('/ornament.png') no-repeat bottom;
+  background-size: 256px;
 }
 
 a {
@@ -28,4 +33,16 @@ a {
   hover:bg-amber-200 hover:text-amber-600 hover:no-underline
   dark:bg-amber-200 dark:bg-opacity-50 dark:text-amber-300
   dark:hover:opacity-75;
+}
+
+.bg-gradient {
+  position: relative;
+  background-color: #123524;
+background-image: radial-gradient(at 67% 77%, hsla(202, 92%, 69%, 1) 0, hsla(202, 92%, 69%, 0) 50%),
+radial-gradient(at 21% 50%, hsla(252, 93%, 57%, 1) 0, hsla(252, 93%, 57%, 0) 50%),
+radial-gradient(at 47% 45%, hsla(305, 86%, 64%, 1) 0, hsla(305, 86%, 64%, 0) 50%),
+radial-gradient(at 45% 9%, hsla(269, 88%, 67%, 1) 0, hsla(269, 88%, 67%, 0) 50%),
+radial-gradient(at 34% 43%, hsla(202, 87%, 55%, 1) 0, hsla(202, 87%, 55%, 0) 50%),
+radial-gradient(at 56% 91%, hsla(225, 85%, 67%, 1) 0, hsla(225, 85%, 67%, 0) 50%),
+radial-gradient(at 74% 40%, hsla(183, 89%, 50%, 1) 0, hsla(183, 89%, 50%, 0) 50%);
 }
