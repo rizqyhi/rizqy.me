@@ -1,11 +1,3 @@
-<svelte:head>
-	<title>Rizqy Hidayat &ndash; Web Engineer</title>
-	<link
-		rel="icon"
-		href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌄</text></svg>"
-	/>
-</svelte:head>
-
 <div class="md:flex justify-between items-center py-16 md:py-28">
 	<div class="md:order-last relative w-40 md:w-60 h-40 md:h-60 mb-8 md:mb-0">
 		<img

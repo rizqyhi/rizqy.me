@@ -7,10 +7,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>Writings &ndash; Rizqy Hidayat</title>
-</svelte:head>
-
 <div>
 	<ul class="grid grid-rows-1 gap-3">
 		{#each data.posts as yearlyPosts}

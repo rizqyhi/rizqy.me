@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 
-	export let title = $page.status === 404 ? 'Route Not Found' : 'Something Went Bad';
+	export const title = $page.status === 404 ? 'Route Not Found' : 'Something Went Bad';
 </script>
 
 <svelte:head>

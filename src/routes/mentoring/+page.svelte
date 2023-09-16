@@ -46,10 +46,6 @@
 	});
 </script>
 
-<svelte:head>
-	<title>Mentoring &ndash; Rizqy Hidayat</title>
-</svelte:head>
-
 <!-- Cal inline embed code begins -->
 <div style="width:100%;height:100%;overflow:scroll" id="my-cal-inline" />
 <!-- Cal inline embed code ends -->

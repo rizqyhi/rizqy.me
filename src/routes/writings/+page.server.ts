@@ -28,6 +28,9 @@ export async function load() {
 	});
 
 	return {
-		posts: yearlyPosts
+		posts: yearlyPosts,
+		meta: {
+			title: 'Writings &ndash; Rizqy Hidayat'
+		}
 	};
 }

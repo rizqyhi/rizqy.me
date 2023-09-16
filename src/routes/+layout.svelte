@@ -1,6 +1,16 @@
-<script>
+<script lang="ts">
 	import '../app.css';
+
+	import { page } from '$app/stores';
 </script>
+
+<svelte:head>
+	<title>{$page.data.meta?.title}</title>
+	<link
+		rel="icon"
+		href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌄</text></svg>"
+	/>
+</svelte:head>
 
 <div class="max-w-5xl mx-auto px-8">
 	<header class="md:flex md:justify-between py-6">
