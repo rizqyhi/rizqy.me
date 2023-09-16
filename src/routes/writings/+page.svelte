@@ -16,9 +16,9 @@
 		{#each data.posts as post}
 			<li class="">
 				<a href={post.link} target="_blank" class="text-lg border-0">{post.title}</a>
-				<span class="mx-2 text-slate-600">(Medium) &mdash;</span><span class="text-slate-600"
-					>{formatDate(post.published)}</span
-				>
+				<span class="mx-2 text-slate-600"
+					>{post.link.includes('medium.com') ? '(Medium)' : ''} &mdash;</span
+				><span class="text-slate-600">{formatDate(post.published)}</span>
 			</li>
 		{/each}
 	</ul>
