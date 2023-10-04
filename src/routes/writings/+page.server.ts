@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-import { parse } from 'rss-to-json';
+import parse from 'rss-to-json';
 
 type blogPost = {
 	title: string;
