@@ -1,5 +1,8 @@
-import { defineConfig } from 'astro/config'
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  // your configuration options here...
-})
+  vite: {
+    plugins: [tailwindcss()],
+  },
+});
