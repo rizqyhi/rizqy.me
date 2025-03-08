@@ -1,9 +1,9 @@
-import type { PageLoad } from './$types';
+import type { PageLoad } from "./$types";
 
 export const load = (async () => {
-	return {
-		meta: {
-			title: 'Works &ndash; Rizqy Hidayat'
-		}
-	};
+  return {
+    meta: {
+      title: "Works &ndash; Rizqy Hidayat",
+    },
+  };
 }) satisfies PageLoad;

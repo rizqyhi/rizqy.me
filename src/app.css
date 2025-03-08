@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 body {
-	@apply text-gray-800;
+  @apply text-gray-800;
 }
 
 a {
-	@apply text-emerald-700 hover:text-slate-800 transition-all ease-in-out duration-200 border-b border-emerald-500;
+  @apply text-emerald-700 hover:text-slate-800 transition-all ease-in-out duration-200 border-b border-emerald-500;
 }
 
 .content a {
-	@apply bg-gradient-to-r from-emerald-50 to-emerald-50 bg-no-repeat;
-	padding: 0 2px 2px;
-	background-size: 100% 0;
-	background-position: 0 100%;
+  @apply bg-gradient-to-r from-emerald-50 to-emerald-50 bg-no-repeat;
+  padding: 0 2px 2px;
+  background-size: 100% 0;
+  background-position: 0 100%;
 }
 
 .content a:hover {
-	background-size: 100% 100%;
+  background-size: 100% 100%;
 }

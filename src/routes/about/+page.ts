@@ -1,9 +1,9 @@
-import type { PageLoad } from './$types';
+import type { PageLoad } from "./$types";
 
 export const load: PageLoad = () => {
-	return {
-		meta: {
-			title: 'About &ndash; Rizqy Hidayat'
-		}
-	};
+  return {
+    meta: {
+      title: "About &ndash; Rizqy Hidayat",
+    },
+  };
 };
