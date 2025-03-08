@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import dayjs from "dayjs";
+import rssToJson from "../lib/rssToJson";
+
+type blogPost = {
+  title: string;
+  link: string;
+  published: number;
+};
+
+const MEDIUM_FEED_URL = "https://medium.com/feed/@rizqyhi";
+const WP_FEED_URL = "https://rizqy.me/feed/";
+
+const mediumPosts = await rssToJson(MEDIUM_FEED_URL);
+const wpPosts = await rssToJson(WP_FEED_URL);
+const posts = [...mediumPosts.items, ...wpPosts.items].sort(
+  (a, b) => b.published - a.published,
+);
+const yearlyPosts: { year: number; items: blogPost[] }[] = [];
+
+posts.forEach((post) => {
+  const postYear = dayjs(post.published).year();
+  const yearIndex = yearlyPosts.findIndex((x) => x.year === postYear);
+
+  if (yearIndex === -1) {
+    return yearlyPosts.push({ year: postYear, items: [post] });
+  }
+
+  return yearlyPosts[yearIndex].items.push(post);
+});
+
+function formatDate(date: number | string) {
+  return dayjs(date).format("MMM D, YYYY");
+}
+---
+
+<BaseLayout>
+  <div>
+    <ul class="grid grid-rows-1 gap-3">
+      {
+        yearlyPosts.map((yearlyPost) => (
+          <>
+            <li class="pt-4 font-bold font-mono text-lg">{yearlyPost.year}</li>
+            {yearlyPost.items.map((post) => (
+              <li>
+                <a href={post.link} target="_blank" class="text-lg border-0">
+                  {post.title}
+                </a>
+                <span class="mx-2 text-slate-600">
+                  {post.link.includes("medium.com") ? "(Medium)" : ""} &mdash;
+                </span>
+                <span class="text-slate-600">{formatDate(post.published)}</span>
+              </li>
+            ))}
+          </>
+        ))
+      }
+    </ul>
+  </div>
+</BaseLayout>

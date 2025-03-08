@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Space+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌄</text></svg>"
+    />
+    <link rel="stylesheet" href="../styles/global.css" />
+
+    <title>Rizqy Hidayat &ndash; Web Engineer</title>
+  </head>
+  <body>
+    <div class="max-w-5xl mx-auto px-8">
+      <header class="md:flex md:justify-between py-6">
+        <a
+          href="/"
+          class="font-mono text-2xl font-bold border-none text-slate-800 hover:text-emerald-700"
+          >🌄 rizqy.me</a
+        >
+        <nav
+          class="md:flex md:items-center mt-4 md:mt-0 leading-loose md:leading-normal"
+        >
+          <a href="/about" class="text-lg mr-4 md:mx-4">About</a>
+          <a href="/writings" class="text-lg mr-4 md:mx-4">Writings</a>
+          <a href="/works" class="text-lg mr-4 md:mx-4">Works</a>
+          <a href="/mentoring" class="text-lg mr-4 md:mx-4 md:mr-0">Mentoring</a
+          >
+        </nav>
+      </header>
+
+      <slot />
+
+      <footer class="sm:flex sm:justify-between pt-16 pb-6">
+        <div class="mb-4 sm:mb-0">
+          <a
+            href="https://github.com/rizqyhi"
+            target="_blank"
+            class="mr-4 sm:mx-2">GitHub</a
+          >
+          <a
+            href="https://twitter.com/rizqyhi"
+            target="_blank"
+            class="mr-4 sm:mx-2">Twitter/X</a
+          >
+          <a
+            href="https://linkedin.com/in/rizqyhidayat"
+            target="_blank"
+            class="mr-4 sm:mx-2 sm:mr-0">LinkedIn</a
+          >
+        </div>
+        <div class="sm:order-first">&copy; 2023 Rizqy Hidayat</div>
+      </footer>
+    </div>
+  </body>
+</html>
