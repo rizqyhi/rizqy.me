@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Prose from "../components/Prose.astro";
+
+export function getStaticPaths() {
+  return Object.values(
+    import.meta.glob("../../writings/*.md", { eager: true }),
+  ).map((writing) => {
+    const filename = writing.file.split("/").pop();
+    const { date, slug } =
+      /^(?<date>\d{4}-\d{2}-\d{2})-(?<slug>[\w-]+)\.md$/.exec(filename).groups;
+
+    return {
+      params: { slug },
+      props: { writing, date },
+    };
+  });
+}
+
+const { writing, date } = Astro.props;
+---
+
+<BaseLayout>
+  <header class="py-20">
+    <h1 class="mb-4 font-mono text-5xl font-bold tracking-tighter leading-snug">
+      {writing.frontmatter.title}
+    </h1>
+    <span>{date}</span>
+  </header>
+
+  <Prose>
+    <writing.Content />
+  </Prose>
+</BaseLayout>
