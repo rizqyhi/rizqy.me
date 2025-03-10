@@ -6,21 +6,38 @@ import rssToJson from "../lib/rssToJson";
 type blogPost = {
   title: string;
   link: string;
-  published: number;
+  date: number;
+  source: "local" | "medium";
 };
 
 const MEDIUM_FEED_URL = "https://medium.com/feed/@rizqyhi";
-const WP_FEED_URL = "https://rizqy.me/feed/";
 
-const mediumPosts = await rssToJson(MEDIUM_FEED_URL);
-const wpPosts = await rssToJson(WP_FEED_URL);
-const posts = [...mediumPosts.items, ...wpPosts.items].sort(
-  (a, b) => b.published - a.published,
+const mediumPosts = (await rssToJson(MEDIUM_FEED_URL)).items.map((item) => ({
+  date: item.published,
+  source: "medium",
+  ...item,
+}));
+const writings = Object.values(
+  import.meta.glob("../../writings/*.md", { eager: true }),
+).map((writing) => {
+  const filename = writing.file.split("/").pop();
+  const { date, slug } =
+    /^(?<date>\d{4}-\d{2}-\d{2})-(?<slug>[\w-]+)\.md$/.exec(filename).groups;
+
+  return {
+    title: writing.frontmatter.title,
+    link: slug,
+    date,
+    source: "local",
+  };
+});
+const posts = [...mediumPosts, ...writings].sort(
+  (a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf(),
 );
 const yearlyPosts: { year: number; items: blogPost[] }[] = [];
 
 posts.forEach((post) => {
-  const postYear = dayjs(post.published).year();
+  const postYear = dayjs(post.date).year();
   const yearIndex = yearlyPosts.findIndex((x) => x.year === postYear);
 
   if (yearIndex === -1) {
@@ -31,7 +48,7 @@ posts.forEach((post) => {
 });
 
 function formatDate(date: number | string) {
-  return dayjs(date).format("MMM D, YYYY");
+  return dayjs(date).format("MMM D");
 }
 ---
 
@@ -44,13 +61,17 @@ function formatDate(date: number | string) {
             <li class="pt-4 font-bold font-mono text-lg">{yearlyPost.year}</li>
             {yearlyPost.items.map((post) => (
               <li>
-                <a href={post.link} target="_blank" class="text-lg border-0">
+                <a
+                  href={post.link}
+                  target={post.source === "medium" ? "_blank" : "_self"}
+                  class="text-lg border-0"
+                >
                   {post.title}
                 </a>
                 <span class="mx-2 text-slate-600">
-                  {post.link.includes("medium.com") ? "(Medium)" : ""} &mdash;
+                  {post.source === "medium" ? "(Medium)" : ""} &mdash;
                 </span>
-                <span class="text-slate-600">{formatDate(post.published)}</span>
+                <span class="text-slate-600">{formatDate(post.date)}</span>
               </li>
             ))}
           </>
