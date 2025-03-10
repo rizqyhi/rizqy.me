@@ -22,6 +22,7 @@ const { writing, date } = Astro.props;
 
 <BaseLayout>
   <header class="py-20">
+    {writing.frontmatter.cover && <img src={writing.frontmatter.cover} />}
     <h1 class="mb-4 font-mono text-5xl font-bold tracking-tighter leading-snug">
       {writing.frontmatter.title}
     </h1>
