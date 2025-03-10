@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import dayjs from "dayjs";
 import rssToJson from "../lib/rssToJson";
+import PageHeader from "../components/PageHeader.astro";
 
 type blogPost = {
   title: string;
@@ -53,6 +54,8 @@ function formatDate(date: number | string) {
 ---
 
 <BaseLayout>
+  <PageHeader title="Writings" />
+
   <div>
     <ul class="grid grid-rows-1 gap-3">
       {
