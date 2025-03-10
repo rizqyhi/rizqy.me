@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Prose from "../components/Prose.astro";
+import { Image } from "astro:assets";
 
 export function getStaticPaths() {
   return Object.values(
@@ -21,12 +22,26 @@ const { writing, date } = Astro.props;
 ---
 
 <BaseLayout>
-  <header class="py-20">
-    {writing.frontmatter.cover && <img src={writing.frontmatter.cover} />}
-    <h1 class="mb-4 font-mono text-5xl font-bold tracking-tighter leading-snug">
-      {writing.frontmatter.title}
-    </h1>
-    <span>{date}</span>
+  <header
+    class="relative h-96 overflow-hidden my-20 -mx-10 p-10 flex items-end bg-gradient-to-t from-emerald-50/90 to-emerald-50/20 rounded-xl shadow-xl"
+  >
+    {
+      writing.frontmatter.cover && (
+        <Image
+          src={import(`../../writings/images/${writing.frontmatter.cover}`)}
+          alt=""
+          class="object-cover absolute -z-10 top-0 left-0"
+        />
+      )
+    }
+    <div>
+      <h1
+        class="mb-4 font-mono text-5xl font-bold tracking-tighter leading-snug"
+      >
+        {writing.frontmatter.title}
+      </h1>
+      <span>{date}</span>
+    </div>
   </header>
 
   <Prose>
