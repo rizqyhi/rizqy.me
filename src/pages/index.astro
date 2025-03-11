@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import profilePhoto from "../images/me.jpg";
 ---
 
 <BaseLayout>
@@ -7,8 +9,8 @@ import BaseLayout from "../layouts/BaseLayout.astro";
     <div
       class="md:order-last relative w-40 md:w-60 h-40 md:h-60 aspect-square mb-8 md:mb-0"
     >
-      <img
-        src="me.jpg"
+      <Image
+        src={profilePhoto}
         alt="Portrait of Rizqy Hidayat"
         class="h-40 md:h-60 aspect-square object-cover rounded-full relative z-20"
       />
