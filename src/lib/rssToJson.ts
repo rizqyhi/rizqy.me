@@ -5,7 +5,32 @@
 import { XMLParser } from "fast-xml-parser";
 import axios, { type AxiosRequestConfig } from "axios";
 
-export default async (url: string, config?: AxiosRequestConfig) => {
+type RSS = {
+  title: string;
+  description: string;
+  link: string;
+  image: string;
+  category: string[];
+  items: RSSItem[];
+};
+
+type RSSItem = {
+  id: string;
+  title: string;
+  description?: string;
+  link: string;
+  author: string;
+  published: number;
+  created: number;
+  category: string[];
+  content: string;
+  enclosures: any;
+};
+
+export default async (
+  url: string,
+  config?: AxiosRequestConfig,
+): Promise<RSS | null> => {
   if (!/(^http(s?):\/\/[^\s$.?#].[^\s]*)/i.test(url)) return null;
 
   const { data } = await axios(url, config);
@@ -22,7 +47,7 @@ export default async (url: string, config?: AxiosRequestConfig) => {
     result.rss && result.rss.channel ? result.rss.channel : result.feed;
   if (Array.isArray(channel)) channel = channel[0];
 
-  const rss = {
+  const rss: RSS = {
     title: channel.title ?? "",
     description: channel.description ?? "",
     link: channel.link && channel.link.href ? channel.link.href : channel.link,
@@ -42,7 +67,7 @@ export default async (url: string, config?: AxiosRequestConfig) => {
     const val = items[i];
     const media = {};
 
-    const obj = {
+    const obj: RSSItem = {
       id: val.guid && val.guid.$text ? val.guid.$text : val.id,
       title: val.title && val.title.$text ? val.title.$text : val.title,
       description:
