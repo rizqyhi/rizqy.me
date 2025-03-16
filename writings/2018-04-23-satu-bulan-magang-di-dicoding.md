@@ -7,7 +7,7 @@ tags:
   - "life"
   - "personal-growth"
   - "work"
-cover: "dicoding.jpg"
+cover: "./images/dicoding.jpg"
 ---
 
 Sudah satu bulan lewat beberapa hari ini saya magang di [Dicoding](https://www.dicoding.com) yang berkantor di Bandung. Bagi yang belum pernah mendengar namanya, Dicoding adalah salah satu penyedia kursus online di Indonesia yang telah bekerja sama dengan beberapa perusahaan multinasional, seperti Google, Microsoft, IBM, dan Samsung.

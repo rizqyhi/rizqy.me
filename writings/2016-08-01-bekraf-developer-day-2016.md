@@ -6,7 +6,7 @@ categories:
 tags:
   - "bekraf"
   - "startup"
-cover: "IMG_20160730_115925_HDR.jpg"
+cover: "./images/IMG_20160730_115925_HDR.jpg"
 ---
 
 Assalamu'alaikum. Sudah lama ternyata sejak postingan terakhir yang saya tulis. Dan pasti setelah sekian lama, saya selalu memulai dengan prolog yang kurang lebih sama seperti yang teman-teman baca ini. Tidak sedikit orang yang berkata rutin menulis itu bagus karena lama-lama tulisan akan mengalir dengan sendirinya. Dan saya ingin mengetes kebenarannya.

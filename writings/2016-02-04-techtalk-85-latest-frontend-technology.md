@@ -7,7 +7,7 @@ tags:
   - "front-end"
   - "jdv"
   - "techtalk"
-cover: "frontend-techs.png"
+cover: "./images/frontend-techs.png"
 ---
 
 Akhirnya, setelah sekian lama, TechTalk muncul lagi. Dan tau-tau udah episode 85. :D. Saya agak telat sih, jadi kurang tau yang bagian depan. Ohya materi episode ini _Latest Frontend Technology_ yang dibawakan oleh Mas Rijalul Fikri.

@@ -7,7 +7,7 @@ categories:
 tags:
   - "wordpress"
   - "wordpress-admin"
-cover: "add-new-customer-modal.png"
+cover: "./images/add-new-customer-modal.png"
 ---
 
 Recently I was writing a plugin for a client. It was a simple plugin to manage invoices and customers. The development is pretty fast thanks to Elliot Condon for his awesome [ACF plugin](https://wordpress.org/plugins/advanced-custom-fields/).

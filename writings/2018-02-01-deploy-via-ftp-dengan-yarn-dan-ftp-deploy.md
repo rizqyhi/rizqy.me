@@ -6,7 +6,7 @@ categories:
 tags:
   - "front-end"
   - "javascript"
-cover: "Screen-Shot-2018-01-31-at-01.27.15.png"
+cover: "./images/Screen-Shot-2018-01-31-at-01.27.15.png"
 ---
 
 Sebelumnya untuk deploy via FTP, saya biasa menggunakan [git-ftp](https://github.com/git-ftp/git-ftp). Untuk proyek-proyek backend, git-ftp sangat pas untuk kebutuhan saya biar nggak perlu pilih file 1-1 yang perlu diunggah. Ini karena git-ftp memanfaatkan _commit_ git untuk menentukan file mana saja yang akan diunggah.
