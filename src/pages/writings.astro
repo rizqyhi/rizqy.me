@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import dayjs from "dayjs";
 import rssToJson from "../lib/rssToJson";
 import PageHeader from "../components/PageHeader.astro";
+import { getCollection } from "astro:content";
 
 type blogPost = {
   title: string;
@@ -13,26 +14,27 @@ type blogPost = {
 
 const MEDIUM_FEED_URL = "https://medium.com/feed/@rizqyhi";
 
-const mediumPosts = (await rssToJson(MEDIUM_FEED_URL)).items.map((item) => ({
-  date: item.published,
-  source: "medium",
-  ...item,
-}));
-const writings = Object.values(
-  import.meta.glob("../../writings/*.md", { eager: true }),
-).map((writing) => {
-  const filename = writing.file.split("/").pop();
-  const { date, slug } =
-    /^(?<date>\d{4}-\d{2}-\d{2})-(?<slug>[\w-]+)\.md$/.exec(filename).groups;
-
-  return {
-    title: writing.frontmatter.title,
-    link: slug,
-    date,
+const mediumPosts = (
+  await rssToJson(MEDIUM_FEED_URL, {
+    headers: { "User-Agent": "rizqy.me site crawler" },
+  })
+)?.items.map(
+  (item): blogPost => ({
+    link: item.link,
+    date: item.published,
+    title: item.title,
+    source: "medium",
+  }),
+);
+const writings = (await getCollection("writings")).map(
+  (writing): blogPost => ({
+    link: writing.id,
+    date: writing.data.date.valueOf(),
+    title: writing.data.title,
     source: "local",
-  };
-});
-const posts = [...mediumPosts, ...writings].sort(
+  }),
+);
+const posts = [...(mediumPosts || []), ...writings].sort(
   (a, b) => new Date(b.date).valueOf() - new Date(a.date).valueOf(),
 );
 const yearlyPosts: { year: number; items: blogPost[] }[] = [];

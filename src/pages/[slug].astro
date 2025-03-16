@@ -2,23 +2,20 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Prose from "../components/Prose.astro";
 import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import dayjs from "dayjs";
 
-export function getStaticPaths() {
-  return Object.values(
-    import.meta.glob("../../writings/*.md", { eager: true }),
-  ).map((writing) => {
-    const filename = writing.file.split("/").pop();
-    const { date, slug } =
-      /^(?<date>\d{4}-\d{2}-\d{2})-(?<slug>[\w-]+)\.md$/.exec(filename).groups;
+export async function getStaticPaths() {
+  const writings = await getCollection("writings");
 
-    return {
-      params: { slug },
-      props: { writing, date },
-    };
-  });
+  return writings.map((writing) => ({
+    params: { slug: writing.id },
+    props: { writing },
+  }));
 }
 
-const { writing, date } = Astro.props;
+const { writing } = Astro.props;
+const { Content } = await render(writing);
 ---
 
 <BaseLayout>
@@ -26,9 +23,9 @@ const { writing, date } = Astro.props;
     class="relative h-96 overflow-hidden my-20 -mx-10 p-10 flex items-end bg-gradient-to-t from-emerald-50/90 to-emerald-50/20 rounded-xl shadow-xl"
   >
     {
-      writing.frontmatter.cover && (
+      writing.data.cover && (
         <Image
-          src={import(`../../writings/images/${writing.frontmatter.cover}`)}
+          src={writing.data.cover}
           alt=""
           class="object-cover absolute -z-10 top-0 left-0"
         />
@@ -38,13 +35,15 @@ const { writing, date } = Astro.props;
       <h1
         class="mb-4 font-mono text-5xl font-bold tracking-tighter leading-snug"
       >
-        {writing.frontmatter.title}
+        {writing.data.title}
       </h1>
-      <span>{date}</span>
+      <span class="font-mono text-lg"
+        >&mdash; {dayjs(writing.data.date).format("MMM D, YYYY")}</span
+      >
     </div>
   </header>
 
   <Prose>
-    <writing.Content />
+    <Content />
   </Prose>
 </BaseLayout>
