@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  name: string;
+  description: string;
+  as?: string;
+  images?: { src: string; alt: string }[];
+}
+
+const { name, description, images = [], as = "div" } = Astro.props;
+const WrapperElement = as;
+---
+
+<WrapperElement
+  class="flex relative before:flex before:flex-none before:w-6 before:h-6 before:mt-1 before:bg-emerald-200 before:rounded-full after:absolute after:w-px after:h-[90%] after:top-10 after:left-3 after:-ml-px after:bg-emerald-200 last:after:hidden"
+>
+  <div class="grid grid-cols-1 gap-y-2 ml-6">
+    <h3 class="font-bold text-xl">{name}</h3>
+    <div class="text-lg">
+      {description}
+    </div>
+    {
+      images && (
+        <div class="flex gap-2">
+          {images.map((image) => (
+            <Image
+              src={import(`../${image.src}`)}
+              alt={image.alt}
+              class="h-32 w-auto p-1 rounded-lg border border-gray-200"
+            />
+          ))}
+        </div>
+      )
+    }
+  </div>
+</WrapperElement>

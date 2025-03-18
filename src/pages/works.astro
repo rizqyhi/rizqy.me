@@ -1,16 +1,58 @@
 ---
 import PageHeader from "../components/PageHeader.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import WorkItem from "../components/WorkItem.astro";
 ---
 
 <BaseLayout>
   <PageHeader title="Works" />
-  [wip]
-  <ul>
-    <li>Minimalizine</li>
-    <li>Padhang</li>
-    <li>Gifood</li>
-    <li>Bagiipiring</li>
-    <li>SadarKawasan</li>
+  <ul class="grid grid-cols-1 gap-y-8">
+    <WorkItem
+      as="li"
+      name="BagiiPiring"
+      description="BagiiPiring is a community empowement program from Bazis (Baznas) DKI Jakarta. They worked with food stalls and small catering services to provide free meals for disadvantaged community."
+      images={[
+        {
+          src: "./images/bagiipiring-thumbnail.png",
+          alt: "BagiiPiring landing page",
+        },
+      ]}
+    />
+    <WorkItem
+      as="li"
+      name="Gifood"
+      description="Food waste and hunger are two of the most common problems around us. Gifood's goal was to solve them by connecting those who have excess foods, to those who need. It's a peer-to-peer food sharing application where people can share, rescue excess foods, and contribute to global Sustainable Development Goals."
+      images={[
+        { src: "./images/gifood-thumbnail.png", alt: "Gifood landing page" },
+      ]}
+    />
+    <WorkItem
+      as="li"
+      name="SadarKawasan.org"
+      description="This is a not-for-profit site built as complimentary media for #SadarKawasan campaign. We aim to provide easy-to-access map of conservation areas in Indonesia and their reference data. Our main goal is to spread awareness of the status of the areas and hope that people will think twice before visiting them."
+      images={[
+        {
+          src: "./images/sadarkawasan-thumbnail-1.png",
+          alt: "SadarKawasan.org landing page",
+        },
+      ]}
+    />
+    <WorkItem
+      as="li"
+      name="Padhang"
+      description="A minimalist-content-focused theme. Padhang comes with responsive layout, 2 widget areas under the main content, social menu, big background image, custom logo and custom menu. Padhang is a Javanesse word for bright. It featured bright white color with dark background. Easily customized from the theme customizer."
+      images={[{ src: "./images/padhang.png", alt: "Padhang WordPress theme" }]}
+    />
+    <WorkItem
+      as="li"
+      name="Minimalizine"
+      description="Simple and responsive WordPress theme. Clean blogging theme, good for you who wants focused on the content. It supports 3 widget areas above the footer, and 11 social media buttons widget. Also translation ready."
+      images={[
+        {
+          src: "./images/minimalizine.png",
+          alt: "Minimalizine WordPress theme",
+        },
+      ]}
+    />
   </ul>
 </BaseLayout>
