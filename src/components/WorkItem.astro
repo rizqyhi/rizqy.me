@@ -10,6 +10,10 @@ interface Props {
 
 const { name, description, images = [], as = "div" } = Astro.props;
 const WrapperElement = as;
+
+const imageSources = import.meta.glob<{ default }>("../images/*.png", {
+  eager: true,
+});
 ---
 
 <WrapperElement
@@ -25,7 +29,7 @@ const WrapperElement = as;
         <div class="flex gap-2">
           {images.map((image) => (
             <Image
-              src={import(`../${image.src}`)}
+              src={imageSources[image.src].default}
               alt={image.alt}
               class="h-32 w-auto p-1 rounded-lg border border-gray-200"
             />
