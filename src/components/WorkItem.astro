@@ -18,7 +18,7 @@ const imageSources = import.meta.glob<{ default }>("../images/*.png", {
 ---
 
 <WrapperElement
-  class="flex relative before:flex before:flex-none before:w-6 before:h-6 before:mt-1 before:bg-emerald-200 before:rounded-full after:absolute after:w-px after:h-[90%] after:top-10 after:left-3 after:-ml-px after:bg-emerald-200 last:after:hidden"
+  class="flex relative before:content-['<>'] before:flex before:flex-none before:w-6 before:h-6 before:mt-1 before:rounded-full before:font-mono before:text-center before:text-xl before:leading-6 before:text-emerald-500 after:absolute after:w-px after:h-[90%] after:top-10 after:left-3 after:-ml-px after:bg-emerald-500/40 last:after:hidden"
 >
   <div class="grid grid-cols-1 gap-y-2 ml-6">
     <h3 class="font-bold text-xl">{name}</h3>
