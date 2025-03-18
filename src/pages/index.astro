@@ -7,26 +7,18 @@ import profilePhoto from "../images/me.jpg";
 <BaseLayout>
   <div class="md:flex justify-between items-center py-16 md:py-28">
     <div
-      class="md:order-last relative w-40 md:w-60 h-40 md:h-60 aspect-square mb-8 md:mb-0"
+      class="md:order-last relative w-40 md:w-60 h-40 md:h-60 aspect-square mb-8 md:mb-0 before:block before:w-60 before:h-60 before:rounded-full before:absolute before:-top-20 before:-left-20 before:z-0 before:bg-emerald-50 before:blur-3xl after:block after:w-40 after:h-40 after:rounded-full after:absolute after:-bottom-20 after:-right-20 after:z-0 after:bg-sky-50 after:blur-3xl"
     >
       <Image
         src={profilePhoto}
         alt="Portrait of Rizqy Hidayat"
-        class="h-40 md:h-60 aspect-square object-cover rounded-full relative z-20"
+        class="h-40 md:h-60 aspect-square object-cover rounded-full relative z-10"
       />
-      <div
-        class="w-60 h-60 rounded-full absolute -top-20 -left-20 z-0 bg-emerald-50 blur-3xl"
-      >
-      </div>
-      <div
-        class="w-40 h-40 rounded-full absolute -bottom-20 -right-20 z-0 bg-sky-50 blur-3xl"
-      >
-      </div>
     </div>
 
     <div>
       <h1
-        class="mb-4 text-5xl md:text-6xl font-mono font-bold tracking-tighter md:leading-snug"
+        class="mb-4 text-5xl md:text-6xl font-mono font-bold tracking-tighter leading-snug z-20 relative"
       >
         Hello,<br />I'm Rizqy Hidayat
       </h1>
