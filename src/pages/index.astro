@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import profilePhoto from "../images/me.jpg";
+---
+
+<BaseLayout>
+  <div class="md:flex justify-between items-center py-16 md:py-28">
+    <div
+      class="md:order-last relative w-40 md:w-60 h-40 md:h-60 aspect-square mb-8 md:mb-0 before:block before:w-60 before:h-60 before:rounded-full before:absolute before:-top-20 before:-left-20 before:z-0 before:bg-emerald-50 before:blur-3xl after:block after:w-40 after:h-40 after:rounded-full after:absolute after:-bottom-20 after:-right-20 after:z-0 after:bg-sky-50 after:blur-3xl"
+    >
+      <Image
+        src={profilePhoto}
+        alt="Portrait of Rizqy Hidayat"
+        class="h-40 md:h-60 aspect-square object-cover rounded-full relative z-10"
+      />
+    </div>
+
+    <div>
+      <h1
+        class="mb-4 text-5xl md:text-6xl font-mono font-bold tracking-tighter leading-snug z-20 relative"
+      >
+        Hello,<br />I'm Rizqy Hidayat
+      </h1>
+      <h2 class="mb-8 text-2xl">
+        Web Engineer + casual gamer + adventure seeker.
+      </h2>
+    </div>
+  </div>
+
+  <p class="md:w-3/4 mb-8 text-xl leading-relaxed content">
+    I believe writing code is a work of art. I spoke mainly PHP, but enjoying
+    frontend crafts as well. Most of my works are dealing with WordPress and
+    Laravel ecosystems. Currently, I spent at <a
+      href="https://www.dicoding.com"
+      target="_blank">Dicoding</a
+    >
+    as <span title="re: tech lead">engineers partner</span>.
+  </p>
+</BaseLayout>

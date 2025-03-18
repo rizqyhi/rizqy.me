@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Prose from "../components/Prose.astro";
+import { Image } from "astro:assets";
+import { getCollection, render } from "astro:content";
+import dayjs from "dayjs";
+
+export async function getStaticPaths() {
+  const writings = await getCollection("writings");
+
+  return writings.map((writing) => ({
+    params: { slug: writing.id },
+    props: { writing },
+  }));
+}
+
+const { writing } = Astro.props;
+const { Content } = await render(writing);
+---
+
+<BaseLayout>
+  <header
+    class="relative h-96 overflow-hidden my-20 -mx-10 p-10 flex items-end bg-gradient-to-t from-emerald-50/90 to-emerald-50/20 rounded-xl shadow-xl"
+  >
+    {
+      writing.data.cover && (
+        <Image
+          src={writing.data.cover}
+          alt=""
+          class="object-cover absolute -z-10 top-0 left-0"
+        />
+      )
+    }
+    <div>
+      <h1
+        class="mb-4 font-mono text-5xl font-bold tracking-tighter leading-snug"
+      >
+        {writing.data.title}
+      </h1>
+      <span class="font-mono text-lg"
+        >&mdash; {dayjs(writing.data.date).format("MMM D, YYYY")}</span
+      >
+    </div>
+  </header>
+
+  <Prose>
+    <Content />
+  </Prose>
+</BaseLayout>
