@@ -6,9 +6,10 @@ interface Props {
   description: string;
   as?: string;
   images?: { src: string; alt: string }[];
+  link?: string;
 }
 
-const { name, description, images = [], as = "div" } = Astro.props;
+const { name, description, link, images = [], as = "div" } = Astro.props;
 const WrapperElement = as;
 
 const imageSources = import.meta.glob<{ default }>("../images/*.png", {
@@ -21,6 +22,13 @@ const imageSources = import.meta.glob<{ default }>("../images/*.png", {
 >
   <div class="grid grid-cols-1 gap-y-2 ml-6">
     <h3 class="font-bold text-xl">{name}</h3>
+    {
+      link && (
+        <a href={link} target="_blank">
+          {link.replace("https://", "")}
+        </a>
+      )
+    }
     <div class="text-lg">
       {description}
     </div>
