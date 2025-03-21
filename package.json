@@ -24,6 +24,8 @@
     "vite": "^6.2.1"
   },
   "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.2.5",
+    "@fontsource/space-mono": "^5.2.5",
     "@tailwindcss/vite": "^4.0.12",
     "astro": "^5.4.2",
     "axios": "^1.5.1",

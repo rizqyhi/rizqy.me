@@ -2,7 +2,7 @@
 @plugin '@tailwindcss/typography';
 
 @theme {
-  --font-sans: "DM Sans", sans-serif;
+  --font-sans: "DM Sans Variable", sans-serif;
   --font-mono: "Space Mono", monospace;
 }
 
