@@ -28,7 +28,7 @@ const mediumPosts = (
 );
 const writings = (await getCollection("writings")).map(
   (writing): blogPost => ({
-    link: writing.id,
+    link: "/" + writing.id,
     date: writing.data.date.valueOf(),
     title: writing.data.title,
     source: "local",
