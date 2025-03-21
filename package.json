@@ -29,6 +29,7 @@
     "axios": "^1.5.1",
     "dayjs": "^1.11.9",
     "fast-xml-parser": "^4.3.2",
+    "htmx.org": "^2.0.4",
     "rss-to-json": "^2.1.1"
   }
 }
