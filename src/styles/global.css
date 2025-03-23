@@ -6,10 +6,25 @@
   --font-mono: "Space Mono", monospace;
 }
 
+@utility prose {
+  --tw-prose-invert-body: var(--color-gray-400);
+}
+
 body {
-  @apply text-gray-800;
+  @apply text-gray-800 dark:bg-gray-900 dark:text-gray-400;
 }
 
 a {
-  @apply text-emerald-700 hover:text-slate-800 transition-all ease-in-out duration-200 underline underline-offset-4 decoration-emerald-500 focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-emerald-500 focus-visible:bg-emerald-50 rounded-sm;
+  @apply text-emerald-700 dark:text-emerald-600 transition-all ease-in-out duration-200 underline underline-offset-4 decoration-emerald-500 rounded-xs;
+  @apply hover:text-slate-800 dark:hover:text-gray-300;
+  @apply focus-visible:no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply dark:text-gray-300;
 }
